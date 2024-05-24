@@ -1,0 +1,62 @@
+﻿@model List<Employee>
+@{
+    int count = 0;
+}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Employee Table</h4>
+                  <a class="btn btn-primary" asp-action="create" asp-controller="employee">Create Employee</a>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            No
+                          </th>
+                            <th>
+                                Image
+                            </th>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Position
+                          </th>
+                          <th>
+                            Description
+                          </th>
+                          <th>
+                            Settings
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          @foreach (Employee employee in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>
+                                    @count;
+                                </td>
+                          <td class="py-1">
+                            <img style="width:150px;height:150px" src="~/assets/img/team/@employee.Image" alt="image"/>
+                          </td>
+                          <td>
+                            @employee.Name
+                          </td>                          
+                          <td>
+                            @employee.Description
+                          </td>
+                          <td>
+                              <a class="btn btn-secondary" asp-action="update" asp-controller="employee" asp-route-id="@employee.Id">Update</a>
+                              <a class="btn btn-danger" asp-action="delete" asp-controller="employee" asp-route-id="@employee.Id">Delete</a>
+                          </td>
+                        </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
